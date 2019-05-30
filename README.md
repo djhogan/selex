@@ -1,3 +1,8 @@
+# Requirements
+
+- tre-agrep
+- Perl
+
 # Extract Exact Matches
 
 Run the perl script `exact_matches.pl`.

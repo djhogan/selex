@@ -12,5 +12,5 @@ while (<STDIN>){
 }
 
 for $key (keys %kmers){
-  print "$kmers{$key}\t$key\n";
+  print "$key\t$kmers{$key}\n";
 }
