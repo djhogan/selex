@@ -1,5 +1,11 @@
-for i in `seq 5 20`
+for i in `seq 5 15`
 do
-  perl count_kmers.pl $i <protein_r1 >kmers/r1.$i &
-  perl count_kmers.pl $i <protein_r2 >kmers/r2.$i &
+  echo $i started
+  join \
+    <(perl count_kmers.pl $i <protein_r1 | sort) \
+    <(perl count_kmers.pl $i <protein_r2 | sort) \
+    | perl add_freq_column.pl \
+    >kmers/$i
+  echo $i finished
 done
+
