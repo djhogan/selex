@@ -68,3 +68,8 @@ from each round. Calculate enrichment for the resulting set.
 * Large Kmers might have enrichment
 * An enrichment in Large Kmers will result in enrichment of smaller, constituent Kmers
 * A small enrichmed Kmer versus a large enriched Kmer?
+
+# Post-Filtering
+
+* Drop kmers that have both counts less than 20 (insufficient sampling)
+* Fit an error model
