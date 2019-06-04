@@ -2,17 +2,16 @@ cleanup(){
   rm NC.dat 89aa.dat
 }
 
-trap cleanup EXIT
+# trap cleanup EXIT
 
 for dataset in NC 89aa
 do
-  for cutoff in 10
-  do
-    awk -v cutoff=$cutoff '($5>=$4)&&($2>=cutoff||$3>=cutoff)&&(sqrt($5)-sqrt($4)>=0.05){print}' \
-      <"$dataset/kmers/12" \
-      >"$dataset.$cutoff.dat"
-  done
+  awk -v cutoff=$cutoff '($5>=$4)&&($2>=cutoff||$3>=cutoff)&&(sqrt($5)-sqrt($4)>=0.05){$6=sqrt($4);$7=sqrt($5);print}' \
+    <"$dataset/kmers/12" \
+    >"$dataset.dat"
 done
-gnuplot -e 'set terminal svg mouse;
-plot "89aa.10.dat" using (sqrt($4)):(sqrt($5)-sqrt($4)):1 with labels hypertext point pt 1 lc rgb "blue" title "89aa",
-     "NC.10.dat"   using (sqrt($4)):(sqrt($5)-sqrt($4)):1 with labels hypertext point pt 2 lc rgb "red"  title "NC"' >kmers.10.svg
+gnuplot -e 'set terminal pngcairo font "sans,10";
+set xlabel "Normalized Frequency";
+set ylabel "Normalized Enrichment";
+plot "89aa.dat" using 6:($7-$6):($7-$6>0.11?stringcolumn(1):"") with labels left offset 1,0 point pt 1 lc rgb "blue" title "89aa",
+     "NC.dat"   using 6:($7-$6)                                 with                        point pt 2 lc rgb "red"  title "NC"' >kmers.png
