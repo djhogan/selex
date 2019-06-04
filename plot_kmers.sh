@@ -1,2 +1,10 @@
-awk '$5/($2>=1?$4:1)>=1.01{print}' \
-  | gnuplot -p -e 'set terminal svg mouse; plot "-" using 4:($5/$4):1 with labels hypertext point pt 7 ps 0.5'
+for dataset in NC 89aa
+do
+  awk '($5>=$4)&&($2>=10||$3>=10)&&(sqrt($5)-sqrt($4)>=0.1){print}' \
+    <"$dataset/r1" \
+    >"$dataset.dat"
+done
+cat "$dataset.dat" <(echo e) "$dataset.dat" \
+  | gnuplot -e 'set terminal svg mouse
+plot "-" using (sqrt($4)):(sqrt($5)-sqrt($4)):1 with labels hypertext point pt 7 ps 0.5,
+     "-" using (sqrt($4)):(sqrt($5)-sqrt($4)):1 with points'
