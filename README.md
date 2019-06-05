@@ -70,12 +70,41 @@ account for heteroskedasticity. The affect of which is seen below.
 
 ## Filtering with Negative Control
 
+Sequence        Cnt1  Cnt2  Freq1  Freq2  V1     V2     Delta
+----            ----  ----  ----   ----   ----   ----   ----
+`AATCGGCACGGC`  1     11    0.003  0.034  0.055  0.186  0.130
+`GTGGCGTGTTCC`  1     9     0.003  0.028  0.055  0.168  0.113
+`TTGCACCTACGC`  1     8     0.003  0.025  0.055  0.158  0.103
+`TGACCACGTGGG`  1     8     0.003  0.025  0.055  0.158  0.103
+`TCCACTTCGGCG`  1     8     0.003  0.025  0.055  0.158  0.103
+`TACGCCTGCATG`  1     8     0.003  0.025  0.055  0.158  0.103
+`CGAGTCTGCGCC`  1     8     0.003  0.025  0.055  0.158  0.103
+`CCGACGCCGCCT`  1     8     0.003  0.025  0.055  0.158  0.103
+`CCCTGCAGTGCT`  1     8     0.003  0.025  0.055  0.158  0.103
+`AGGGTCTCCGCG`  1     8     0.003  0.025  0.055  0.158  0.103
+
+Sequence        Cnt1  Cnt2  Freq1  Freq2  V1     V2     Delta
+----            ----  ----  ----   ----   ----   ----   ----
+`TTCTCGCCAGCG`  1     7     0.003  0.019  0.052  0.139  0.087
+`TCGCTGCGTGAT`  1     7     0.003  0.019  0.052  0.139  0.087
+`TCCGGTAGCTCA`  1     7     0.003  0.019  0.052  0.139  0.087
+`GTCGGCATACCA`  1     7     0.003  0.019  0.052  0.139  0.087
+`GTCAGCTACGTT`  1     7     0.003  0.019  0.052  0.139  0.087
+`GGGCGAACGACG`  1     7     0.003  0.019  0.052  0.139  0.087
+`GGCCGTGATCTG`  1     7     0.003  0.019  0.052  0.139  0.087
+`GAAGCGTCCGGG`  1     7     0.003  0.019  0.052  0.139  0.087
+`CTGGTGCACTGC`  1     7     0.003  0.019  0.052  0.139  0.087
+`CGACCCTCGAGC`  1     7     0.003  0.019  0.052  0.139  0.087
+
 The same process was run 
 * Drop kmers that have both counts less than 20 (insufficient sampling)
 * Fit an error model
 
-# Results
 
 The best k-mers came
 
 
+# Alternate Parmaeter Settings
+
+* Error in primer trim set to 0
+* Length filter in pipeline set to 20
