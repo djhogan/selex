@@ -1,6 +1,6 @@
 primer5="${1}"
 primer3="${2}"
-agrep --show-position -E 0 "${primer5}" \
+agrep --show-position -E 2 "${primer5}" \
   | perl -F: -e '@_=split /-/,@F[0]; print substr(@F[1],@_[1])' \
-  | agrep --show-position -E 0 "${primer3}" \
+  | agrep --show-position -E 2 "${primer3}" \
   | perl -F: -e '@_=split /-/,@F[0]; print substr(@F[1],0,@_[0]) . "\n"'
