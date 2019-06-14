@@ -51,7 +51,6 @@ do
   join -o auto -e 0 -a 1 -a 2 \
     <(perl count_kmers.pl $i <"$FILE1" | sort) \
     <(perl count_kmers.pl $i <"$FILE2" | sort) \
-    | awk '$2==0{$2=1}$3==0{$3=1}{print}' \
     | perl add_freq_column.pl \
     >"${DIR}/${i}"
   echo $i finished
