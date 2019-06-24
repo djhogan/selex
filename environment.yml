@@ -1,0 +1,5 @@
+name: selex
+channels:
+  - bioconda
+dependencies:
+  - cutadapt
