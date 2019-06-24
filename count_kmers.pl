@@ -4,7 +4,7 @@ $k = $ARGV[0];
 %kmers = ();
 while (<STDIN>){
   chomp;
-  $slen = length($_);
+  $slen = length;
   for ($i=0; $i < $slen-$k+1; $i++){
     $kmer = substr($_, $i, $k);
     $kmers{$kmer}++;
